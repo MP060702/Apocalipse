@@ -15,13 +15,14 @@ public class PrimarySkill : BaseSkill
     {
         CooldownTime = 0.2f;
 
-        weapons = new Weapon[5];
+        weapons = new Weapon[6];
 
         weapons[0] = new Level1Weapon();
         weapons[1] = new Level2Weapon();
         weapons[2] = new Level3Weapon();
         weapons[3] = new Level4Weapon();
         weapons[4] = new Level5Weapon();
+        weapons[5] = new Level6Weapon(); 
     }
 
     public override void Activate()
@@ -134,3 +135,36 @@ public class Level5Weapon : Weapon
         }
     }
 }
+
+public class Level6Weapon : Weapon
+{
+    public void Activate(PrimarySkill primarySkill, CharacterManager characterManager)
+    {
+        Vector3 position = characterManager.Player.transform.position;
+
+        primarySkill.ShootProjectile(position, Vector3.up);
+        primarySkill.ShootProjectile(position, new Vector3(1f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.9f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.8f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.7f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.6f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.5f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.4f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.3f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.2f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0.1f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(0f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.1f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.2f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.3f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.4f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.5f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.6f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.7f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.8f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-0.9f, 1, 0));
+        primarySkill.ShootProjectile(position, new Vector3(-1f, 1, 0));
+    }
+}
+
+
