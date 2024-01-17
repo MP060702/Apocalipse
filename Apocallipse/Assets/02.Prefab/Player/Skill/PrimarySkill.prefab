@@ -48,4 +48,4 @@ MonoBehaviour:
   CurrentTime: 0
   bIsCoolDown: 0
   ProjectileMoveSpeed: 20
-  Projectile: {fileID: 1104053541885248991, guid: 2f147c382a08d7a4fb6bd4be435e5765, type: 3}
+  Projectile: {fileID: 1104053541885248991, guid: 15ec448bab1ca3d4e8f6e04749d475a9, type: 3}

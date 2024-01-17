@@ -15,4 +15,3 @@ public class CharacterManager : BaseManager
         _player.Init(this);
     }
 }
-

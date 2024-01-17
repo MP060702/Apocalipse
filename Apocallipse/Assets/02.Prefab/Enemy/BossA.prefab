@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4673085480794064636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1141993163034262223, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141993163034262223, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268323562568652969, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_Name
+      value: BossA
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034889859316358809, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156283759279528266, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8421458170528590454, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+    m_RemovedComponents:
+    - {fileID: 8277122276786712611, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2268323562568652969, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3006380661228492029}
+  m_SourcePrefab: {fileID: 100100000, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+--- !u!1 &6890672628299308629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2268323562568652969, guid: 41b192febb04b534da321444c024bbd1, type: 3}
+  m_PrefabInstance: {fileID: 4673085480794064636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3006380661228492029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890672628299308629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8f601f593ad9840b9d43000d0b7206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Projectile: {fileID: 1104053541885248991, guid: d1503b715d8263d41959b9b73d55d1af, type: 3}
+  ProjectileMoveSpeed: 5
+  FireRate: 2
+  MoveSpeed: 2
+  MoveDistance: 5

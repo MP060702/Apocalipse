@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public CharacterManager CharacterManager;
     [HideInInspector] public bool bStageCleared = false;
+    public MapManager MapManager;
 
     private void Awake()  // 객체 생성시 최초 실행 (그래서 싱글톤을 여기서 생성)
     {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     {
         if (CharacterManager == null) { return; }
         CharacterManager.Init(this);
+
+        MapManager.Init(this);
     }
 
     public void GameStart()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -142,28 +143,13 @@ public class Level6Weapon : Weapon
     {
         Vector3 position = characterManager.Player.transform.position;
 
-        primarySkill.ShootProjectile(position, Vector3.up);
-        primarySkill.ShootProjectile(position, new Vector3(1f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.9f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.8f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.7f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.6f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.5f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.4f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.3f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.2f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0.1f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(0f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.1f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.2f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.3f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.4f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.5f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.6f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.7f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.8f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-0.9f, 1, 0));
-        primarySkill.ShootProjectile(position, new Vector3(-1f, 1, 0));
+        for (int i = 0; i < 360; i += 5)
+        {
+            float angle = i * Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+
+            primarySkill.ShootProjectile(position, direction);
+        }
     }
 }
 
