@@ -175,3 +175,5 @@ MonoBehaviour:
   MoveTime: 1
   Projectile: {fileID: 1104053541885248991, guid: 2f147c382a08d7a4fb6bd4be435e5765, type: 3}
   ProjectileMoveSpeed: 2
+  BulletPos1: {fileID: 3161843395898935942}
+  BulletPos2: {fileID: 1271059380417376717}

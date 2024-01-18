@@ -62,6 +62,18 @@ public class PlayerHPSystem : MonoBehaviour
             }
         }
 
+        if (collision.gameObject.CompareTag("Boss") && !GameManager.Instance.GetPlayerCharacter().Invincibility
+            && !GameManager.Instance.bStageCleared)
+        {
+            Health -= 1;
+            StartCoroutine(HitFlick());
+
+            if (Health <= 0)
+            {
+                GameManager.Instance.GetPlayerCharacter().DeadProcess();
+            }
+        }
+
         if (collision.gameObject.CompareTag("Item"))
         {
             if (Health > MaxHealth)
@@ -70,6 +82,7 @@ public class PlayerHPSystem : MonoBehaviour
             }
 
             //GameManager.Instance.SoundManager.PlaySFX("GetItem");
+            
             Destroy(collision.gameObject);
         }
 
