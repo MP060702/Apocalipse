@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455551056589338958, guid: d66242a597e363943a9b2a46a8f84001, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyBullet
       objectReference: {fileID: 0}
     - target: {fileID: 3220031528631991610, guid: d66242a597e363943a9b2a46a8f84001, type: 3}
       propertyPath: m_Sprite

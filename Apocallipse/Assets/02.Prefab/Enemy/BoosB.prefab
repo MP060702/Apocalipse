@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987949181067457056, guid: b45ea0032b6c4d94b9f10d316fe4e88a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.35
       objectReference: {fileID: 0}
     - target: {fileID: 2987949181067457056, guid: b45ea0032b6c4d94b9f10d316fe4e88a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoosB
       objectReference: {fileID: 0}
+    - target: {fileID: 6317728658084656144, guid: b45ea0032b6c4d94b9f10d316fe4e88a, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -94,3 +98,6 @@ MonoBehaviour:
   FireRate: 2
   MoveSpeed: 2
   MoveDistance: 5
+  EnemyMoveSpeed: 0
+  EnemyB: {fileID: 2922969862722768229, guid: 0afd3c55795a4c84ca9f1dc465305e15, type: 3}
+  SpawnObjs: {fileID: 3461939216638270615, guid: b64716bc13c7776408eaeda37ce67e2e, type: 3}

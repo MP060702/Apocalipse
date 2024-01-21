@@ -7,9 +7,13 @@ public class Enemy : BaseCharacter
     public float Health = 3f;
     public float AttackDamage = 1f;
     bool bIsDead = false;
+    
+   
     public bool bMustSpawnItem = false;
 
     public GameObject ExplodeFX;
+
+    public bool blsfreeze = false;
 
     void Start()
     {
@@ -17,6 +21,11 @@ public class Enemy : BaseCharacter
 
     void Update()
     {
+        if(blsfreeze == true)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = new Color(2, 0, 0, 0.5f);
+            Invoke("FreezingClear", 2f);
+        }
     }
 
     public void Dead()
@@ -53,6 +62,13 @@ public class Enemy : BaseCharacter
             Destroy(collision.gameObject);
         }
     }
+
+    public void FreezingClear()
+    {
+        blsfreeze = false;
+        GetComponentInChildren<SpriteRenderer>().color = new Color(2, 1, 1, 1);
+    }
+
     IEnumerator HitFlick()
     {
         int flickCount = 0; // ±ô¹ÚÀÎ È½¼ö¸¦ ±â·ÏÇÏ´Â º¯¼ö
@@ -70,4 +86,6 @@ public class Enemy : BaseCharacter
             flickCount++; // ±ô¹ÚÀÎ È½¼ö Áõ°¡
         }
     }
+
+    
 }

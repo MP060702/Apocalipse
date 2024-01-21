@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class EnemyPattern4 : MonoBehaviour
 {
+    Enemy enemy;
     public float MoveSpeed;
     public float AttackStopTime;
     public float MoveTime;
@@ -17,6 +18,7 @@ public class EnemyPattern4 : MonoBehaviour
 
     void Start()
     {
+        enemy = GetComponent<Enemy>();
         StartCoroutine(Attack());
     }
 
@@ -39,13 +41,16 @@ public class EnemyPattern4 : MonoBehaviour
             Vector3 direction = playerPos - transform.position;
             direction.Normalize();
 
-            var projectile1 = Instantiate(Projectile, BulletPos1.transform.position, Quaternion.identity);
-            projectile1.GetComponent<Projectile>().SetDirection(direction);
-            projectile1.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
+            if(enemy.blsfreeze == false)
+            {
+                var projectile1 = Instantiate(Projectile, BulletPos1.transform.position, Quaternion.identity);
+                projectile1.GetComponent<Projectile>().SetDirection(direction);
+                projectile1.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
 
-            var projectile2 = Instantiate(Projectile, BulletPos2.transform.position, Quaternion.identity);
-            projectile2.GetComponent<Projectile>().SetDirection(direction);
-            projectile2.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
+                var projectile2 = Instantiate(Projectile, BulletPos2.transform.position, Quaternion.identity);
+                projectile2.GetComponent<Projectile>().SetDirection(direction);
+                projectile2.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
+            }
 
             _isAttack = true;
 
@@ -59,6 +64,9 @@ public class EnemyPattern4 : MonoBehaviour
 
     void Move()
     {
-        transform.position -= new Vector3(0f, MoveSpeed * Time.deltaTime, 0f);
+        if (enemy.blsfreeze == false)
+        {
+            transform.position -= new Vector3(0f, MoveSpeed * Time.deltaTime, 0f);
+        }
     }
 }

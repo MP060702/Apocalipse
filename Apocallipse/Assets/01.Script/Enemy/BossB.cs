@@ -9,11 +9,15 @@ public class BossB : MonoBehaviour
     public float FireRate = 2.0f;
     public float MoveSpeed = 2.0f;
     public float MoveDistance = 5.0f;
+    public float EnemyMoveSpeed = 0f;
+    public GameObject EnemyB;
 
     private int _currentPatternIndex = 0;
     private bool _movingRight = true;
     private bool _bCanMove = false;
     private Vector3 _originPosition;
+
+    public GameObject SpawnObjs;
 
     private void Start()
     {
@@ -52,17 +56,15 @@ public class BossB : MonoBehaviour
                 Pattern1();
                 break;
             case 1:
-                Pattern2();
+                //Pattern2();
                 break;
             case 2:
-                StartCoroutine(Pattern3());
+                //StartCoroutine(Pattern3());
                 break;
             case 3:
-                Pattern4();
+                //Pattern4();
                 break;
-            case 4:
-                Pattern5();
-                break;
+          
         }
     }
 
@@ -100,6 +102,7 @@ public class BossB : MonoBehaviour
         }
     }
 
+    
     public void ShootProjectile(Vector3 position, Vector3 direction)
     {
         GameObject instance = Instantiate(Projectile, position, Quaternion.identity);
@@ -112,23 +115,36 @@ public class BossB : MonoBehaviour
         }
     }
 
-    private void Pattern1()
+    public void SpawnTurret(Vector3 position, Vector3 direction)
     {
-        // 패턴 1: 원형으로 총알 발사
-        int numBullets1 = 30;
-        float angleStep1 = 360.0f / numBullets1;
+        GameObject instance = Instantiate(EnemyB, position, Quaternion.identity);
+        EnemyPattern2 Turret = instance.GetComponent<EnemyPattern2>();
+        instance.transform.parent = gameObject.transform;
 
-        for (int i = 0; i < numBullets1; i++)
-        {
-            float angle1 = i * angleStep1;
-            float radian1 = angle1 * Mathf.Deg2Rad;
-            Vector3 direction1 = new Vector3(Mathf.Cos(radian1), Mathf.Sin(radian1), 0);
-
-            ShootProjectile(transform.position, direction1);
+        if (Turret != null)
+        {   
+            Turret.SetDirection(direction.normalized);
         }
     }
 
-    private void Pattern2()
+    public void SpawnObjects(Vector3 position, Vector3 direction)
+    {
+        GameObject instance1 = Instantiate(SpawnObjs, position, Quaternion.identity);
+        EnemyPattern1 Enemy1 = instance1.GetComponent<EnemyPattern1>();
+
+        if(Enemy1 != null)
+        {
+            Enemy1.MoveSpeed = EnemyMoveSpeed;
+            Enemy1.SetDirection(direction.normalized);
+        }
+
+    }
+
+    private void Pattern1()
+    {
+        SpawnTurret(transform.position, transform.position);
+    }
+        private void Pattern2()
     {
         // 패턴 2: 방사형으로 총알 발사
         int numBullets2 = 12;
@@ -162,29 +178,9 @@ public class BossB : MonoBehaviour
 
     private void Pattern4()
     {
-        // 패턴 3: 나선형으로 총알 발사
-        int numBullets3 = 10;
-        float angleStep3 = 360.0f / numBullets3;
-        float radius = 2.0f;
-
-        for (int i = 0; i < numBullets3; i++)
-        {
-            float angle3 = i * angleStep3;
-            float radian3 = angle3 * Mathf.Deg2Rad;
-            float x = radius * Mathf.Cos(radian3);
-            float y = radius * Mathf.Sin(radian3);
-
-            Vector3 direction3 = new Vector3(x, y, 0).normalized;
-
-            ShootProjectile(transform.position, direction3);
-        }
+        SpawnObjects(transform.position, transform.position);
     }
 
-    private void Pattern5()
-    {
-          
-
-    }
 
     private Vector3 PlayerPosition()
     {
