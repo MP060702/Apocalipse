@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2455551056589338958, guid: d66242a597e363943a9b2a46a8f84001, type: 3}
       propertyPath: m_Name
-      value: PlayerBullet
+      value: PlayerBullet 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455551056589338958, guid: d66242a597e363943a9b2a46a8f84001, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2455551056589338958, guid: d66242a597e363943a9b2a46a8f84001, type: 3}
       propertyPath: m_TagString

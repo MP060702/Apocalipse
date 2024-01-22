@@ -62,6 +62,23 @@ public class PlayerHPSystem : MonoBehaviour
             }
         }
 
+        if (collision.gameObject.CompareTag("EnemyBullet")
+            && !GameManager.Instance.GetPlayerCharacter().Invincibility
+            && !GameManager.Instance.bStageCleared)
+        {
+            Health -= 1;
+            StartCoroutine(HitFlick());
+
+            //GameManager.Instance.SoundManager.PlaySFX("Hit");
+
+            Destroy(collision.gameObject);
+
+            if (Health <= 0)
+            {
+                GameManager.Instance.GetPlayerCharacter().DeadProcess();
+            }
+        }
+
         if (collision.gameObject.CompareTag("Boss") && !GameManager.Instance.GetPlayerCharacter().Invincibility
             && !GameManager.Instance.bStageCleared)
         {

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class BossB : MonoBehaviour
@@ -10,13 +11,13 @@ public class BossB : MonoBehaviour
     public float MoveSpeed = 2.0f;
     public float MoveDistance = 5.0f;
     public float EnemyMoveSpeed = 0f;
-    public GameObject EnemyB;
-
+   
+    public GameObject Turret;
     private int _currentPatternIndex = 0;
     private bool _movingRight = true;
     private bool _bCanMove = false;
     private Vector3 _originPosition;
-
+    GameObject ForDestroy;
     public GameObject SpawnObjs;
 
     private void Start()
@@ -53,18 +54,17 @@ public class BossB : MonoBehaviour
         switch (_currentPatternIndex)
         {
             case 0:
-                Pattern1();
+                //Pattern1();
                 break;
             case 1:
-                //Pattern2();
+                StartCoroutine(Pattern2());
                 break;
             case 2:
                 //StartCoroutine(Pattern3());
                 break;
             case 3:
                 //Pattern4();
-                break;
-          
+                break;         
         }
     }
 
@@ -116,14 +116,15 @@ public class BossB : MonoBehaviour
     }
 
     public void SpawnTurret(Vector3 position, Vector3 direction)
-    {
-        GameObject instance = Instantiate(EnemyB, position, Quaternion.identity);
-        EnemyPattern2 Turret = instance.GetComponent<EnemyPattern2>();
+    {   
+
+        GameObject instance = Instantiate(Turret, position, Quaternion.identity);
+        Turret Turrets = instance.GetComponent<Turret>();
         instance.transform.parent = gameObject.transform;
 
-        if (Turret != null)
-        {   
-            Turret.SetDirection(direction.normalized);
+        if (Turrets != null)
+        {
+            Turrets.SetDirection(direction);
         }
     }
 
@@ -142,23 +143,28 @@ public class BossB : MonoBehaviour
 
     private void Pattern1()
     {
-        SpawnTurret(transform.position, transform.position);
-    }
-        private void Pattern2()
-    {
-        // 패턴 2: 방사형으로 총알 발사
-        int numBullets2 = 12;
-        float angleStep2 = 360.0f / numBullets2;
-
-        for (int i = 0; i < numBullets2; i++)
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+        foreach (GameObject turret in turrets)
         {
-            float angle2 = i * angleStep2;
-            float radian2 = angle2 * Mathf.Deg2Rad;
-            Vector3 direction2 = new Vector3(Mathf.Cos(radian2), Mathf.Sin(radian2), 0);
-
-            ShootProjectile(transform.position, direction2);
+            Destroy(turret);
         }
 
+        for (int i = 0; i < 360; i += 45)
+        {
+            float angle = i * Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+            SpawnTurret(transform.position, direction);
+        }
+    }
+     private IEnumerator Pattern2()
+     {
+        gameObject.layer = 6;
+        GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0.4f);
+
+        yield return new WaitForSeconds(4);
+
+        gameObject.layer = 0;
+        GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
 
     }
 

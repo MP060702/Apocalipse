@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3763890737084282087}
   - component: {fileID: 8328717474526644574}
   - component: {fileID: 1121894747189416313}
+  - component: {fileID: 4149015291009049505}
   - component: {fileID: 719574127371658971}
   m_Layer: 0
   m_Name: FeildObject
@@ -126,9 +127,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddfdf64fa10efd468655e424180fc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 0, y: 0, z: 0}
   ExplodeFX: {fileID: 0}
   _lifeTime: 60
+--- !u!114 &4149015291009049505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297270776388746077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88506f29fea9d9d4fa4974cb2bbcc6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 0}
+  rotationSpeed: 5
 --- !u!70 &719574127371658971
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

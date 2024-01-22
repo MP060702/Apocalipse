@@ -5,19 +5,22 @@ using UnityEngine;
 public class FuelToHPSkill : BaseSkill
 {
     public float Fuel;
-    public float Health;
+    public int Health;
     public float FuelToHP = 10f;
 
     public override void Activate()
-    {
-        Fuel = GameInstance.instance.CurrentPlayerFuel;
-        Health = GameInstance.instance.CurrentPlayerHP;
+    {   
+        PlayerHPSystem playerHPSystem = GetComponent<PlayerHPSystem>();
+        InitFuel();
+        Health += 1;
+        Fuel -= FuelToHP;
+    }
 
-        if(Fuel > FuelToHP)
-        {
-            Fuel -= FuelToHP;
-            Health += 1;
-        }
+    public void InitFuel()
+    {
+        GameInstance.instance.CurrentPlayerHP = Health;
+
+        GameInstance.instance.CurrentPlayerFuel = Fuel;
     }
 
 }

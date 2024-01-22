@@ -5,10 +5,10 @@ using UnityEngine.TextCore.Text;
 
 public class FieldObject : MonoBehaviour
 {
-    public Vector3 playerPos;
+    
     private Vector3 _direction;
     public GameObject ExplodeFX;
-    private Vector3 Axis = new Vector3(0, 0, 0);
+    
 
     [SerializeField]
     private float _lifeTime = 60f;
