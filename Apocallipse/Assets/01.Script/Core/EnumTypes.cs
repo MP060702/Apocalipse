@@ -13,6 +13,7 @@ namespace EnumTypes
         Invincibility,
         Repair,
         Refuel,
+        AddOnItem
         
     }
 }

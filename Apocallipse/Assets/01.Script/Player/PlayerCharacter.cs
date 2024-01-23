@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +34,7 @@ public class PlayerCharacter : BaseCharacter
     public int MaxWeaponLevel = 3;
     #endregion
 
+    public Transform[] AddOnPos;
 
     public override void Init(CharacterManager characterManager)
     {
@@ -114,4 +117,51 @@ public class PlayerCharacter : BaseCharacter
             //}
         }
     }
+
+    public void SetInvincibility(bool invin)
+    {
+        if (invin)
+        {
+            if (invincibilityCoroutine != null)
+            {
+                StopCoroutine(invincibilityCoroutine);
+            }
+
+            invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
+        }
+    }
+
+    private IEnumerator InvincibilityCoroutine()
+    {
+        Invincibility = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // 무적 지속 시간 (초)
+        float invincibilityDuration = 3f;
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+
+        // 무적이 해제될 때까지 대기
+        yield return new WaitForSeconds(invincibilityDuration);
+
+        // 타이머가 만료되면 무적을 비활성화
+        Invincibility = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1f);
+    }
+    
+    
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {   
+        if(collision.gameObject.tag == "Item")
+        {
+            if (collision.gameObject.GetComponent<BaseItem>())
+            {
+                
+                BaseItem item = collision.gameObject.GetComponent<BaseItem>();                
+                item.OnGetItem(CharacterManager);
+            }
+        }
+    }
+
+    
 }

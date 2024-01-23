@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPattern2 : MonoBehaviour
 {
-
+   
     Enemy enemy;
     public float MoveSpeed;
     public float AttackStopTime;

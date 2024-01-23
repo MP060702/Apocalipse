@@ -15,8 +15,12 @@ public class BossA : MonoBehaviour
     private bool _bCanMove = false;
     private Vector3 _originPosition;
 
+    Enemy enemy;
+    
     private void Start()
-    {
+    {   
+        enemy = GetComponent<Enemy>();
+        enemy.bMustSpawnItem = true;
         Debug.Log(Mathf.Rad2Deg);
         _originPosition = transform.position;
         StartCoroutine(MoveDownAndStartPattern());
@@ -60,9 +64,7 @@ public class BossA : MonoBehaviour
             case 3:
                 Pattern4();
                 break;
-            case 4:
-                Pattern5();
-                break;
+
         }
     }
 
@@ -179,12 +181,7 @@ public class BossA : MonoBehaviour
             ShootProjectile(transform.position, direction3);
         }
     }
-
-    private void Pattern5()
-    {
-          
-
-    }
+    
 
     private Vector3 PlayerPosition()
     {

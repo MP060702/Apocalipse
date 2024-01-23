@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FuelToHPSkill : BaseSkill
-{
+{   
+
     public float Fuel;
     public int Health;
-    public float FuelToHP = 10f;
+    public float FuelToHPValue = 10f;
 
     public override void Activate()
     {   
-        PlayerHPSystem playerHPSystem = GetComponent<PlayerHPSystem>();
-        InitFuel();
-        Health += 1;
-        Fuel -= FuelToHP;
+        PlayerHPSystem playerHPSystem = GetComponentInParent<PlayerHPSystem>();
+        PlayerFuelSystem playerFuelSystem = GetComponentInParent< PlayerFuelSystem>();
+        Fuel = playerFuelSystem.Fuel;
+        Health = playerHPSystem.Health;
+        if (Fuel > FuelToHPValue)
+        {
+            Fuel -= FuelToHPValue;
+            Health += 1;
+        }
     }
-
-    public void InitFuel()
-    {
-        GameInstance.instance.CurrentPlayerHP = Health;
-
-        GameInstance.instance.CurrentPlayerFuel = Fuel;
-    }
-
 }

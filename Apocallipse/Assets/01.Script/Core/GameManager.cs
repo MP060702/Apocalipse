@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool bStageCleared = false;
     public MapManager MapManager;
     public EnemySpawnManager EnemySpawnManager;
+    public ItemManager ItemManager;
+    public BaseItem BaseItem;
 
     private void Awake()  // 객체 생성시 최초 실행 (그래서 싱글톤을 여기서 생성)
     {
@@ -32,10 +34,16 @@ public class GameManager : MonoBehaviour
 
         MapManager.Init(this);
         EnemySpawnManager.Init(this);
+        
     }
 
     public void GameStart()
     {
         SceneManager.LoadScene("Stage1");
+    }
+
+    public void EnemyDies()
+    {
+
     }
 }
