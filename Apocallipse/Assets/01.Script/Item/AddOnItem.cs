@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class AddOnItem : BaseItem
 {
-    public GameObject AddOnPrefabs;
-    
+    public GameObject AddonPrefab;
 
     public override void OnGetItem(CharacterManager characterManager)
     {   
+        base.OnGetItem(characterManager);
+        var player = characterManager.GameManager.GetPlayerCharacter();
+        Debug.Log(AddonPrefab);
+        SpawnAddOn(player.AddOnPos[GameInstance.instance.CurrentPlayerAddOnCount].transform.position, AddonPrefab);
         
-        PlayerCharacter playerCharacter = characterManager.GetComponent<PlayerCharacter>();
-        AddOn addOn = AddOnPrefabs.GetComponent<AddOn>();
+             
+    }
 
-        for(int i = 0; i < playerCharacter.AddOnPos.Length; i++)    
-        { 
-            Instantiate(AddOnPrefabs, playerCharacter.AddOnPos[i].transform.position, Quaternion.identity);
-            addOn.num++;
-        }
-        
+    public static void SpawnAddOn(Vector3 position, GameObject prefabs)
+    {
+        Instantiate(prefabs, position, Quaternion.identity);
     }
 }

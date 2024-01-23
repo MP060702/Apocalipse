@@ -34,12 +34,22 @@ public class PlayerCharacter : BaseCharacter
     public int MaxWeaponLevel = 3;
     #endregion
 
+    public int CurrentPlayerAddCount;
     public Transform[] AddOnPos;
 
     public override void Init(CharacterManager characterManager)
     {
         base.Init(characterManager);
         InitializeSkills();
+
+        CurrentPlayerAddCount = GameInstance.instance.CurrentPlayerAddOnCount;
+        for(int i = 0; i < CurrentPlayerAddCount; i++)
+        {
+            AddOnItem addOnItem = characterManager.GameManager.BaseItem.GetComponent<AddOnItem>();           
+            addOnItem.OnGetItem(characterManager);
+            
+        }
+
     }
 
     public void DeadProcess()

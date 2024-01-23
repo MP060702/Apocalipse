@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class AddOn : MonoBehaviour
 {
-    public int num = 0;
-    public Vector3 position;
 
     void Update()
     {
         GameObject manager = GameObject.Find("Managers");
-        CharacterManager character = manager.GetComponent<CharacterManager>();
-        PlayerCharacter playerCharacter = character.GetComponent<PlayerCharacter>();
-        position = playerCharacter.AddOnPos[num].transform.position;
+        BaseCharacter character = manager.GetComponent<CharacterManager>().Player;
 
-        transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 2f);
+        PlayerCharacter character1 = character.GetComponent<PlayerCharacter>();     
+        transform.position = Vector3.Lerp(transform.position, character1.
+            AddOnPos[character1.CurrentPlayerAddCount].transform.position, Time.deltaTime * 100f);
     }
 }
