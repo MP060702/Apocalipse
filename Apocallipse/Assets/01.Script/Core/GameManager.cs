@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public MapManager MapManager;
     public EnemySpawnManager EnemySpawnManager;
     public ItemManager ItemManager;
-    public BaseItem BaseItem;
+    
 
     private void Awake()  // 객체 생성시 최초 실행 (그래서 싱글톤을 여기서 생성)
     {

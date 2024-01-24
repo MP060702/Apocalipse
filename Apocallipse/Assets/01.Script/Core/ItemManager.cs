@@ -19,7 +19,6 @@ public class BaseItem : MonoBehaviour
 
     public virtual void OnGetItem(CharacterManager characterManager) 
     {
-        
     }
 }
 

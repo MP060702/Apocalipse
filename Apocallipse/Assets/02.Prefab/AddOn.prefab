@@ -140,7 +140,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5015241491998905450}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5fbff3afea30b4a89d8b60f742dfba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  num: 0
-  position: {x: 0, y: 0, z: 0}
+  SpawnPos: {fileID: 0}
+  Projectile: {fileID: 1104053541885248991, guid: 15ec448bab1ca3d4e8f6e04749d475a9, type: 3}

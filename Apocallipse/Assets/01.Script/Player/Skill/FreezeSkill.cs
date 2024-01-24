@@ -7,7 +7,8 @@ public class FreezeSkill : BaseSkill
 
 
     public override void Activate()
-    {
+    {   
+        base.Activate();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject obj in enemies)
         {

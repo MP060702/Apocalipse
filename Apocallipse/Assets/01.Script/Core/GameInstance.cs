@@ -22,7 +22,9 @@ public class GameInstance : MonoBehaviour
     // 플레이어의 연료값을 담당하는 실수형 변수이다.
     public float CurrentPlayerFuel = 100f;
 
-    public int CurrentPlayerAddOnCount = 2;
+    public int CurrentPlayerAddOnCount = 0;
+    public int TransformNumber = 0;
+    public int MaxPlayerAddOncount = 0;
 
     private void Awake()
     {
@@ -36,6 +38,11 @@ public class GameInstance : MonoBehaviour
             Destroy(gameObject);
         }
         GameStartTime = Time.time;
+    }
+
+    private void Update()
+    {
+        Debug.Log(CurrentPlayerAddOnCount);
     }
 
 }

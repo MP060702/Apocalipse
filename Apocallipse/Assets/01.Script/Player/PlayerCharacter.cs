@@ -35,7 +35,11 @@ public class PlayerCharacter : BaseCharacter
     #endregion
 
     public int CurrentPlayerAddCount;
+    public int MaxPlayerAddCount;
+    public int TransformNumber;
     public Transform[] AddOnPos;
+    public GameObject addOnitems;
+    
 
     public override void Init(CharacterManager characterManager)
     {
@@ -43,13 +47,12 @@ public class PlayerCharacter : BaseCharacter
         InitializeSkills();
 
         CurrentPlayerAddCount = GameInstance.instance.CurrentPlayerAddOnCount;
+        
         for(int i = 0; i < CurrentPlayerAddCount; i++)
-        {
-            AddOnItem addOnItem = characterManager.GameManager.BaseItem.GetComponent<AddOnItem>();           
-            addOnItem.OnGetItem(characterManager);
-            
+        {   
+            AddOnItem.SpawnAddOn(AddOnPos[i].position,
+                addOnitems, AddOnPos[i]);
         }
-
     }
 
     public void DeadProcess()

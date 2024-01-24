@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class AddOn : MonoBehaviour
 {
+    public Transform SpawnPos;
+    public GameObject Projectile;
 
+    void Awake()
+    {
+        StartCoroutine(Attack());
+    }
     void Update()
     {
-        GameObject manager = GameObject.Find("Managers");
-        BaseCharacter character = manager.GetComponent<CharacterManager>().Player;
+        transform.position = Vector3.Lerp(transform.position, SpawnPos.position, Time.deltaTime);
+    }
 
-        PlayerCharacter character1 = character.GetComponent<PlayerCharacter>();     
-        transform.position = Vector3.Lerp(transform.position, character1.
-            AddOnPos[character1.CurrentPlayerAddCount].transform.position, Time.deltaTime * 100f);
+    IEnumerator Attack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            var projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
+            projectile.GetComponent<Projectile>().SetDirection(Vector2.up);
+            projectile.GetComponent<Projectile>().MoveSpeed = 3;
+
+        }
     }
 }
