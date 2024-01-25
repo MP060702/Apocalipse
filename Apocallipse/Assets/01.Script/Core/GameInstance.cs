@@ -42,7 +42,7 @@ public class GameInstance : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(CurrentPlayerAddOnCount);
+        
     }
 
 }

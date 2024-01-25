@@ -67,6 +67,14 @@ public class PlayerCharacter : BaseCharacter
         UpdateSkillInput();
     }
 
+    public void InitSkillCoolDown()
+    {
+        foreach(var skill in Skills.Values)
+        {
+            skill.InitCoolDown();
+        }
+    }
+
     private void UpdateMovement()
     {
         _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

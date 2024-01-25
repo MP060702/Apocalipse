@@ -48,6 +48,7 @@ public class EnemySpawnManager : BaseManager
         {
             BossSpawnCount = 20;
         }
+        Debug.Log(_spawnCount);
     }
 
     public override void Init(GameManager gameManager)
@@ -112,8 +113,9 @@ public class EnemySpawnManager : BaseManager
                 }
 
                 _bSpawnBoss = true;
+                Instantiate(SpawnBoss, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1, 0f), Quaternion.identity);
             }
-            //Instantiate(SpawnBoss, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1, 0f), Quaternion.identity);
+            
         }
     }
 

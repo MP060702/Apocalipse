@@ -2,29 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+
+[System.Serializable]
+public class CoolDownText
+{
+    public EnumTypes.PlayerSkill Skill;
+    public TextMeshProUGUI Text;
+}
 
 public class PlayerUI : MonoBehaviour
 {
     public Image[] HealthImages = new Image[3];
     public Image RepairSkill;
     public Image BombSkill;
-    public Image FreezeSkill;
-    public Image FieldSkill;
     public Slider FuelSlider;
 
     public TextMeshProUGUI SkillCooldownNoticeText;
-
-    private Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI>     _coolDownTexts = 
-        new Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI>();
+    public List<CoolDownText> SkillCooldownTexts;
 
     private void Start()
     {
-        _coolDownTexts[EnumTypes.PlayerSkill.Repair] = RepairSkill.GetComponentInChildren<TextMeshProUGUI>();
-        _coolDownTexts[EnumTypes.PlayerSkill.Bomb] = BombSkill.GetComponentInChildren<TextMeshProUGUI>();
-        _coolDownTexts[EnumTypes.PlayerSkill.Freeze] = FreezeSkill.GetComponentInChildren<TextMeshProUGUI>();
-        _coolDownTexts[EnumTypes.PlayerSkill.Field] = FieldSkill.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -46,19 +46,15 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateSkills()
     {
-        UpdateSkill(EnumTypes.PlayerSkill.Repair);
-        UpdateSkill(EnumTypes.PlayerSkill.Bomb);
-        UpdateSkill(EnumTypes.PlayerSkill.Freeze);
-        UpdateSkill(EnumTypes.PlayerSkill.Field);
-    }
+        foreach (var item in SkillCooldownTexts)
+        {
+            bool isCoolDown = GameManager.Instance.GetPlayerCharacter().Skills[item.Skill].bIsCoolDown;
+            float currentTime = GameManager.Instance.GetPlayerCharacter().Skills[item.Skill].CurrentTime;
 
-    private void UpdateSkill(EnumTypes.PlayerSkill skill)
-    {
-        bool isCoolDown = GameManager.Instance.GetPlayerCharacter().Skills[skill].bIsCoolDown;
-        float currentTime = GameManager.Instance.GetPlayerCharacter().Skills[skill].CurrentTime;
-
-        _coolDownTexts[skill].gameObject.SetActive(isCoolDown);
-        _coolDownTexts[skill].text = $"{Mathf.RoundToInt(currentTime)}";
+            item.Text.gameObject.SetActive(isCoolDown);
+            item.Text.text = $"{Mathf.RoundToInt(currentTime)}";
+            
+        }
     }
 
     private void UpdateFuel()

@@ -190,6 +190,6 @@ public class BossA : MonoBehaviour
 
     private void OnDestroy()
     {
-        //GameManager.Instance.StageClear();
+        GameManager.Instance.StageClear();
     }
 }
